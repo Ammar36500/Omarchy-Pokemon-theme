@@ -1,9 +1,9 @@
 # Omarchy Pokemon Theme
 
-# Installation (for now)
+# Installation
 
 ```bash
-git clone https://github.com/Ammar36500/Omarchy-Pokemon-theme
+omarchy-theme-install https://github.com/Ammar36500/omarchy-pokemon-theme.git
 
 ```
 
