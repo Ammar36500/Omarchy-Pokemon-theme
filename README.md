@@ -31,6 +31,9 @@ cd pokemon-colorscripts
 sudo ./install.sh
 ```
 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/00aa19b4-93a8-4771-8897-0a3251a7a383" />
+
+
 ---
 
 ## ⚡ Fastfetch Setup
