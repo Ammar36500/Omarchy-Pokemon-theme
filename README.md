@@ -94,6 +94,8 @@ The config shows a Pikachu sprite at size 8, followed by a system info panel wit
 
 <img width="1920" height="1200" alt="lockscreen" src="https://github.com/user-attachments/assets/0ef678ef-5d13-45ba-9140-839ea1d4c9ec" />
 
+# Shoutout to : https://github.com/errantProgrammer for HyprLock 
+
 
 
 ## 📦 Other Dependencies
