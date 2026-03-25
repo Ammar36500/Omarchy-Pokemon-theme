@@ -1,7 +1,31 @@
-[colors]
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "iA Writer Mono S" }
+bold = { family = "iA Writer Mono S" }
+italic = { family = "iA Writer Mono S" }
+size = 9
+
+[window]
+padding.x = 14
+padding.y = 14
+decorations = "None"
+opacity = 0.6
+
+[keyboard]
+bindings = [
+  { key = "Insert", mods = "Shift", action = "Paste" },
+  { key = "Insert", mods = "Control", action = "Copy" },
+  { key = "Return", mods = "Shift", chars = "\u001B\r" }
+]
+
+[terminal]
+osc52 = "CopyPaste"
+
 [colors.primary]
-background = "#0f2138"
-foreground = "#fdf4c4"
+background = "#0a0a0a"
+foreground = "#ffe8c0"
 
 [colors.normal]
 black   = "#0f2138"

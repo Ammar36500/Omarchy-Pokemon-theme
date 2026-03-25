@@ -1,2 +1,276 @@
 @define-color background #0f2138;
 @define-color foreground #fdf4c4;
+
+* {
+    font-family: 'JetBrainsMono Nerd Font';
+    font-size: 13px;
+    font-weight: 800;
+    transition: all 0.3s ease;
+}
+
+window#waybar { background: transparent; }
+
+/* GLOBAL MODULE BASE */
+#custom-omarchy, #workspaces, #clock, #network, #cpu, #bluetooth, #mpris, #pulseaudio,
+#battery, #custom-updates, #custom-weather, #custom-power {
+    background: alpha(@background, 0.75);
+    border-radius: 14px;
+    padding: 0px 10px;
+    margin: 4px 3px;
+}
+
+/* PIKACHU LAUNCHER */
+#custom-omarchy {
+    min-width: 30px;
+    min-height: 30px;
+    background-image: url("file:///.config/omarchy/current/theme/pokeball.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 0;
+    border: 2px solid #FFD700;
+    box-shadow:
+        0 0 10px rgba(255, 215, 0, 0.7),
+        0 0 24px rgba(255, 215, 0, 0.35),
+        0 0 40px rgba(255, 180, 0, 0.18);
+}
+
+/* WORKSPACES — Pokéball split border */
+#workspaces {
+    border-top:    2px solid #cc2200;
+    border-left:   2px solid #cc2200;
+    border-bottom: 2px solid #e8e8e8;
+    border-right:  2px solid #e8e8e8;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    padding: 0px 10px;
+    color: rgba(220, 180, 120, 0.6);
+    margin: 4px 1px;
+    border-radius: 8px;
+}
+
+#workspaces button:hover {
+    color: #ff8c00;
+    background: rgba(255, 100, 0, 0.15);
+    border-radius: 8px;
+}
+
+#workspaces button.active {
+    color: #FFD700;
+    background: rgba(255, 100, 0, 0.2);
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: #ff2200;
+}
+
+/* CLOCK — fire/frost split border, gold glow */
+#clock {
+    color: #FFD700;
+    border-top:    2px solid #cc3300;
+    border-left:   2px solid #cc3300;
+    border-bottom: 2px solid #00aaaa;
+    border-right:  2px solid #00aaaa;
+    text-shadow:
+        0 0 8px  rgba(255, 215, 0, 0.85),
+        0 0 20px rgba(255, 180, 0, 0.5),
+        0 0 36px rgba(255, 140, 0, 0.25);
+    box-shadow:
+        0 -2px 10px rgba(255, 80,  0,  0.2),
+        0  2px 10px rgba(0,  180, 180, 0.2),
+        0  0   16px rgba(255, 215, 0,  0.12);
+}
+
+/*  RIGHT MODULES — Pokémon type colors */
+
+/* Fire type — Charizard orange */
+#custom-updates {
+    color: #ff8c35;
+    border: 2px solid #ff6b00;
+    text-shadow: 0 0 6px rgba(255, 100, 0, 0.5);
+    box-shadow: 0 0 8px rgba(255, 80, 0, 0.15);
+}
+
+/* Ice type — Articuno sky */
+#custom-weather {
+    color: #7ee8ff;
+    border: 2px solid #4dcfef;
+    text-shadow: 0 0 6px rgba(100, 210, 255, 0.5);
+    box-shadow: 0 0 8px rgba(80, 200, 240, 0.12);
+}
+
+/* Electric type — Jolteon yellow */
+#cpu {
+    color: #ffe44d;
+    border: 2px solid #FFD700;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 8px rgba(255, 200, 0, 0.15);
+}
+
+/* Psychic type — Mewtwo blue */
+#bluetooth {
+    color: #89b4fa;
+    border: 2px solid #6496f5;
+    text-shadow: 0 0 6px rgba(100, 150, 255, 0.5);
+    box-shadow: 0 0 8px rgba(100, 150, 255, 0.12);
+}
+
+/* Grass type — Bulbasaur green */
+#network {
+    color: #50e890;
+    border: 2px solid #2ecc71;
+    text-shadow: 0 0 6px rgba(50, 220, 120, 0.5);
+    box-shadow: 0 0 8px rgba(50, 200, 100, 0.12);
+}
+
+#network.disconnected {
+    color: rgba(255, 80, 0, 0.7);
+    border-color: rgba(255, 80, 0, 0.5);
+    text-shadow: none;
+}
+
+/* Fairy type — Jigglypuff pink */
+#pulseaudio {
+    color: #ff9ecd;
+    border: 2px solid #ff6eb0;
+    text-shadow: 0 0 6px rgba(255, 100, 180, 0.5);
+    box-shadow: 0 0 8px rgba(255, 100, 170, 0.12);
+}
+
+#pulseaudio.muted {
+    color: rgba(180, 100, 140, 0.5);
+    border-color: rgba(180, 80, 120, 0.3);
+    text-shadow: none;
+}
+
+/* Fairy type — Clefairy pink */
+#mpris {
+    color: #ffb8d4;
+    border: 2px solid #ff8ab8;
+    text-shadow: 0 0 6px rgba(255, 140, 190, 0.4);
+}
+
+/* BATTERY — dynamic type colors, no animation */
+
+/* Water type — Vaporeon teal */
+#battery {
+    color: #5ee8e8;
+    border: 2px solid #00c8c8;
+    text-shadow: 0 0 6px rgba(0, 200, 200, 0.5);
+    box-shadow: 0 0 8px rgba(0, 180, 180, 0.12);
+}
+
+/* Charging — Pikachu electric gold */
+#battery.charging,
+#battery.plugged {
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    text-shadow:
+        0 0 8px  rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 180, 0, 0.5);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
+}
+
+/* Warning — Charmander orange */
+#battery.warning:not(.charging) {
+    color: #ff8c35;
+    border: 2px solid #ff6b00;
+    text-shadow: 0 0 8px rgba(255, 100, 0, 0.7);
+    box-shadow: 0 0 10px rgba(255, 80, 0, 0.2);
+}
+
+/* Critical — Charizard rage red */
+#battery.critical:not(.charging) {
+    color: #ff2200;
+    border: 2px solid #ff2200;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
+    box-shadow:
+        0 0 12px rgba(255, 0, 0, 0.5),
+        0 0 28px rgba(255, 0, 0, 0.25);
+}
+
+/* POWER BUTTON — Team Rocket red */
+#custom-power {
+    color: #ff3333;
+    border: 2px solid #cc1100;
+    text-shadow: 0 0 8px rgba(220, 30, 0, 0.6);
+    box-shadow:
+        0 0 8px  rgba(200, 20, 0, 0.2),
+        0 0 20px rgba(200, 20, 0, 0.1);
+}
+
+#custom-power:hover {
+    color: #ff6644;
+    border-color: #ff3300;
+    text-shadow:
+        0 0 12px rgba(255, 60, 0, 0.9),
+        0 0 26px rgba(255, 30, 0, 0.5);
+    box-shadow:
+        0 0 16px rgba(255, 40, 0, 0.45),
+        0 0 32px rgba(255, 20, 0, 0.2);
+}
+
+/* HOVER GLOWS */
+#custom-updates:hover {
+    color: #ffaa55;
+    text-shadow: 0 0 12px rgba(255, 140, 0, 0.9);
+    border-color: #ff8c00;
+}
+#custom-weather:hover {
+    color: #aaf4ff;
+    text-shadow: 0 0 12px rgba(120, 230, 255, 0.9);
+    border-color: #7ee8ff;
+}
+#cpu:hover {
+    color: #ffee88;
+    text-shadow: 0 0 12px rgba(255, 230, 0, 0.95);
+    border-color: #ffe44d;
+}
+#bluetooth:hover {
+    color: #aac4ff;
+    text-shadow: 0 0 12px rgba(140, 180, 255, 0.9);
+    border-color: #aac4ff;
+}
+#network:hover {
+    color: #88ffbb;
+    text-shadow: 0 0 12px rgba(80, 255, 150, 0.9);
+    border-color: #70ffaa;
+}
+#pulseaudio:hover {
+    color: #ffd0e8;
+    text-shadow: 0 0 12px rgba(255, 160, 210, 0.9);
+    border-color: #ffb8e0;
+}
+#battery:hover {
+    color: #88ffff;
+    text-shadow: 0 0 12px rgba(0, 240, 240, 0.9);
+    border-color: #7efcfc;
+}
+#mpris:hover {
+    color: #ffd8e8;
+    text-shadow: 0 0 12px rgba(255, 180, 220, 0.9);
+    border-color: #ffcce0;
+}
+
+/* TOOLTIPS — Pokédex entry card */
+tooltip {
+    background: alpha(@background, 0.95);
+    border-top:    2px solid #cc3300;
+    border-left:   2px solid #cc3300;
+    border-bottom: 2px solid #00aaaa;
+    border-right:  2px solid #00aaaa;
+    border-radius: 10px;
+    box-shadow:
+        0 0 16px rgba(255, 80, 0,  0.12),
+        0 0 16px rgba(0, 180, 180, 0.12),
+        0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+tooltip label {
+    color: @foreground;
+    font-size: 12px;
+    padding: 4px 2px;
+}
